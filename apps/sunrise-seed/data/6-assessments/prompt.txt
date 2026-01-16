@@ -1,0 +1,138 @@
+fixed asset name:
+"Dell OptiPlex 3080"
+"Apple MacBook Pro"
+"Samsung Monitor S24R350"
+"Office Chair OC500"
+"Company Car CC100"
+"Conference Table CT200"
+"Air Conditioner AC250"
+"Office Sofa OS300"
+"Projector P100"
+"Workstation W400"
+
+
+metrics =
+[
+  {
+    workspace: getObjectId("Stageholder Demo"),
+    _id: getObjectId("Operating Hours"),
+    name: "Operating Hours",
+    type: "NUMERICAL",
+    min: 0,
+    max: 5000,
+    default: 0,
+    labels: [
+      { label: "Low", color: "#00FF00", value: 500 },
+      { label: "Medium", color: "#FFFF00", value: 2000 },
+      { label: "High", color: "#FF0000", value: 4000 },
+    ],
+    description: "Cumulative operating hours of the asset",
+    created_at: "2023-01-01T00:00:00Z",
+    updated_at: "2023-01-01T00:00:00Z",
+    aggregates: ["count", "sum", "average"],
+    created_by: getObjectId("Stageholder Admin"),
+  },
+  {
+    workspace: getObjectId("Stageholder Demo"),
+    _id: getObjectId("Asset Condition"),
+    name: "Asset Condition",
+    type: "CATEGORICAL",
+    default: "Good",
+    labels: [
+      { label: "Poor", color: "#FF0000" },
+      { label: "Fair", color: "#ba6918" },
+      { label: "Good", color: "#00FF00" },
+      { label: "Excellent", color: "#0000FF" },
+    ],
+    description: "Overall condition of the asset",
+    created_at: "2023-01-02T00:00:00Z",
+    updated_at: "2023-01-02T00:00:00Z",
+    aggregates: ["count"],
+    created_by: getObjectId("Stageholder Admin"),
+  },
+  {
+    workspace: getObjectId("Stageholder Demo"),
+    _id: getObjectId("Usage Frequency"),
+    name: "Usage Frequency",
+    type: "NUMERICAL",
+    min: 0,
+    max: 7,
+    default: 5,
+    labels: [
+      { label: "Infrequent", color: "#00FF00", value: 2 },
+      { label: "Regular", color: "#FFFF00", value: 5 },
+      { label: "Frequent", color: "#FF0000", value: 7 },
+    ],
+    description: "Number of days per week the asset is used",
+    created_at: "2023-01-03T00:00:00Z",
+    updated_at: "2023-01-03T00:00:00Z",
+    aggregates: ["count", "sum", "average"],
+    created_by: getObjectId("Stageholder Admin"),
+  },
+  {
+    workspace: getObjectId("Stageholder Demo"),
+    _id: getObjectId("Maintenance Frequency"),
+    name: "Maintenance Frequency",
+    type: "NUMERICAL",
+    min: 0,
+    max: 4,
+    default: 2,
+    labels: [
+      { label: "Quarterly", color: "#00FF00", value: 1 },
+      { label: "Bi-Annually", color: "#FFFF00", value: 2 },
+      { label: "Annually", color: "#FF0000", value: 4 },
+    ],
+    description: "Number of maintenance checks per year",
+    created_at: "2023-01-04T00:00:00Z",
+    updated_at: "2023-01-04T00:00:00Z",
+    aggregates: ["count", "sum", "average"],
+    created_by: getObjectId("Stageholder Admin"),
+  },
+]
+
+---
+schema: 
+const MonitoringSchema = new mongoose.Schema(
+  {
+    fixed_asset: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: FixedAsset
+    },
+    metric: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Metric
+    },
+    value: Schema.Types.Mixed,
+    note: String
+  },
+  {
+    timestamps: true
+  }
+)
+
+---
+example:
+[
+
+  {
+    workspace: getObjectId("Stageholder Demo"),
+    fixed_asset: getObjectId("Sales Team Laptop"),
+    metric: getObjectId("Operating Hours"),
+    value: 1200,
+    note: "Sales Team Laptop operating hours are in the medium range.",
+    assessed_by: getObjectId("John User"),
+    created_at: "2023-06-04T09:30:00.000Z",
+  },
+  {
+    workspace: getObjectId("Stageholder Demo"),
+    fixed_asset: getObjectId("Reception Area Chairs"),
+    metric: getObjectId("Asset Condition"),
+    value: { label: "Excellent", color: "#0000FF" },
+    note: "Reception Area Chairs are in excellent condition.",
+    assessed_by: getObjectId("John User"),
+    created_at: "2023-06-05T10:00:00.000Z",
+  },
+]
+
+---
+please create array based on schema provided, the result kind a like the example but column just like the example, the data is about monitoring, if the metrics type is CATEGORICAL the value is object with label and color, if the metrics type is NUMERICAL the value is number

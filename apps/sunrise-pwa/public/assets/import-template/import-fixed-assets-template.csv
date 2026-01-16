@@ -1,0 +1,3 @@
+NAME;CODE;SERIAL NUMBER;TYPE (tangible/intangible);DESCRIPTION;PURCHASE COST;PURCHASE DATE
+Hardware;hardware-code;Example Serial Number 1;tangible;Example Hardware Description;10.05;2020-12-31
+Software;software-code;Example Serial Number 2;intangible;Example Software Description;10.05;2020-01-01

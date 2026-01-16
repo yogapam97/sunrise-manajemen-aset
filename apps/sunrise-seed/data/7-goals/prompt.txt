@@ -1,0 +1,95 @@
+schema: 
+const GoalSchema = new mongoose.Schema(
+  {
+    name: String,
+    metric: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Metric
+    },
+    expire_date: Date,
+    aggregate: String,
+    label_target: String,
+    target: Number,
+    description: String
+  },
+  {
+    timestamps: true
+  }
+)
+
+---
+available metric:
+[
+    {
+      "_id": getObjectId("Operating Hours"),
+      "name": "Operating Hours",
+      "type": "NUMERICAL",
+      "min": 0,
+      "max": 5000,
+      "default": 0,
+      "labels": [
+        {"label": "Low", "color": "#00FF00", "value": 500},
+        {"label": "Medium", "color": "#FFFF00", "value": 2000},
+        {"label": "High", "color": "#FF0000", "value": 4000}
+      ],
+      "description": "Cumulative operating hours of the asset"
+    },
+    {
+      "_id": getObjectId("Asset Condition"),
+      "name": "Asset Condition",
+      "type": "CATEGORICAL",
+      "default": "Good",
+      "labels": [
+        {"label": "Poor", "color": "#FF0000"},
+        {"label": "Fair", "color": "#FFFF00"},
+        {"label": "Good", "color": "#00FF00"},
+        {"label": "Excellent", "color": "#0000FF"}
+      ],
+      "description": "Overall condition of the asset"
+    },
+    {
+      "_id": getObjectId("Usage Frequency"),
+      "name": "Usage Frequency",
+      "type": "NUMERICAL",
+      "min": 0,
+      "max": 7,
+      "default": 5,
+      "labels": [
+        {"label": "Infrequent", "color": "#00FF00", "value": 2},
+        {"label": "Regular", "color": "#FFFF00", "value": 5},
+        {"label": "Frequent", "color": "#FF0000", "value": 7}
+      ],
+      "description": "Number of days per week the asset is used"
+    },
+    {
+      "_id": getObjectId("Maintenance Frequency"),
+      "name": "Maintenance Frequency",
+      "type": "NUMERICAL",
+      "min": 0,
+      "max": 4,
+      "default": 2,
+      "labels": [
+        {"label": "Quarterly", "color": "#00FF00", "value": 1},
+        {"label": "Bi-Annually", "color": "#FFFF00", "value": 2},
+        {"label": "Annually", "color": "#FF0000", "value": 4}
+      ],
+      "description": "Number of maintenance checks per year",
+    }
+  ]
+
+---
+example:
+[
+    {
+        _id: getObjectId('Conference Room Table'),
+        name: 'Conference Room Table',
+        location: getObjectId('Headquarters'),
+        placement: getObjectId('Deployed'),
+        category: getObjectId('Furniture & Fixtures'),
+        assignee: getObjectId('Jane Admin'),
+        hashtags: getObjectIds(['OfficeFurniture']),
+    }
+]
+
+---
+please create array based on schema provided, the result kind a like the example but column just like the example, the data is about metrics goal, for CATEGORICAL type metrics there can only COUNT aggregation, for NUMERICAL there are SUM, AVERAGE AND COUNT aggregation, for CATEGORICAL type label target is COUNT of the label name. do you understand or need more inforamtion?

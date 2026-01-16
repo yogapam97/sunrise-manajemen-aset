@@ -1,0 +1,167 @@
+import { getObjectId } from '../../helpers/index';
+
+const goals = [
+    {
+        _id: getObjectId('Lower Operating Hours'),
+        workspace: getObjectId("Workspace Demo"),
+        name: 'Lower Operating Hours',
+        metric: getObjectId('Operating Hours'),
+        expire_date: "2023-12-31T23:59:59.999Z",
+        aggregate: 'SUM',
+        target: 3500,
+        description: "Our goal is to keep the cumulative operating hours under 3500 by the end of 2023.",
+        created_by: getObjectId('Stageholder Admin'),
+        created_at: "2023-01-01T00:00:00.000Z",
+        updated_at: "2023-01-01T00:00:00.000Z"
+    },
+    {
+        _id: getObjectId('Maintain Good Asset Condition'),
+        workspace: getObjectId("Workspace Demo"),
+        name: 'Maintain Good Asset Condition',
+        metric: getObjectId('Asset Condition'),
+        expire_date: "2023-12-31T23:59:59.999Z",
+        aggregate: 'COUNT',
+        label_target: 'Good',
+        target: 50,
+        description: "Our goal is to maintain at least 50 assets in good condition by the end of 2023.",
+        created_by: getObjectId('Stageholder Admin'),
+        created_at: "2023-01-01T00:00:00.000Z",
+        updated_at: "2023-01-01T00:00:00.000Z"
+    },
+    {
+        _id: getObjectId('Improve Usage Frequency'),
+        workspace: getObjectId("Workspace Demo"),
+        name: 'Improve Usage Frequency',
+        metric: getObjectId('Usage Frequency'),
+        expire_date: "2023-12-31T23:59:59.999Z",
+        aggregate: 'AVERAGE',
+        target: 6,
+        description: "Our goal is to increase the average usage frequency to 6 days a week by the end of 2023.",
+        created_by: getObjectId('Stageholder Admin'),
+        created_at: "2023-01-01T00:00:00.000Z",
+        updated_at: "2023-01-01T00:00:00.000Z"
+    },
+    {
+        _id: getObjectId('Increase Maintenance Frequency'),
+        workspace: getObjectId("Workspace Demo"),
+        name: 'Increase Maintenance Frequency',
+        metric: getObjectId('Maintenance Frequency'),
+        expire_date: "2023-12-31T23:59:59.999Z",
+        aggregate: 'SUM',
+        target: 150,
+        description: "Our goal is to carry out a total of 150 maintenance checks by the end of 2023.",
+        created_by: getObjectId('Stageholder Admin'),
+        created_at: "2023-01-01T00:00:00.000Z",
+        updated_at: "2023-01-01T00:00:00.000Z"
+    },
+    {
+        _id: getObjectId('Reduce Poor Asset Condition'),
+        workspace: getObjectId("Workspace Demo"),
+        name: 'Reduce Poor Asset Condition',
+        metric: getObjectId('Asset Condition'),
+        expire_date: "2024-12-31T23:59:59.999Z",
+        aggregate: 'COUNT',
+        label_target: 'Poor',
+        target: 5,
+        description: "Our goal is to reduce the number of assets in poor condition to 5 by the end of 2024.",
+        created_by: getObjectId('Stageholder Admin'),
+        created_at: "2023-12-31T23:59:59.999Z",
+        updated_at: "2023-12-31T23:59:59.999Z"
+    },
+    {
+        _id: getObjectId('Increase Regular Usage Frequency'),
+        workspace: getObjectId("Workspace Demo"),
+        name: 'Increase Regular Usage Frequency',
+        metric: getObjectId('Usage Frequency'),
+        expire_date: "2024-12-31T23:59:59.999Z",
+        aggregate: 'COUNT',
+        label_target: 'Regular',
+        target: 70,
+        description: "Our goal is to increase the number of assets with regular usage to 70 by the end of 2024.",
+        created_by: getObjectId('Stageholder Admin'),
+        created_at: "2023-12-31T23:59:59.999Z",
+        updated_at: "2023-12-31T23:59:59.999Z"
+    },
+    {
+        _id: getObjectId('Lower Maintenance Frequency'),
+        workspace: getObjectId("Workspace Demo"),
+        name: 'Lower Maintenance Frequency',
+        metric: getObjectId('Maintenance Frequency'),
+        expire_date: "2024-12-31T23:59:59.999Z",
+        aggregate: 'AVERAGE',
+        target: 2,
+        description: "Our goal is to reduce the average number of maintenance checks to 2 times a year by the end of 2024.",
+        created_by: getObjectId('Stageholder Admin'),
+        created_at: "2023-12-31T23:59:59.999Z",
+        updated_at: "2023-12-31T23:59:59.999Z"
+    },
+    {
+        _id: getObjectId('Maintain Operating Hours'),
+        workspace: getObjectId("Workspace Demo"),
+        name: 'Maintain Operating Hours',
+        metric: getObjectId('Operating Hours'),
+        expire_date: "2024-12-31T23:59:59.999Z",
+        aggregate: 'AVERAGE',
+        target: 2000,
+        description: "Our goal is to maintain an average of 2000 operating hours across all assets by the end of 2024.",
+        created_by: getObjectId('Stageholder Admin'),
+        created_at: "2023-12-31T23:59:59.999Z",
+        updated_at: "2023-12-31T23:59:59.999Z"
+    },
+    {
+        _id: getObjectId('Optimize Asset Conditions'),
+        workspace: getObjectId("Workspace Demo"),
+        name: 'Optimize Asset Conditions',
+        metric: getObjectId('Asset Condition'),
+        expire_date: "2025-12-31T23:59:59.999Z",
+        aggregate: 'COUNT',
+        label_target: 'Excellent',
+        target: 60,
+        description: "Our goal is to have 60 assets with 'Excellent' condition by the end of 2025.",
+        created_by: getObjectId('Stageholder Admin'),
+        created_at: "2024-01-01T00:00:00.000Z",
+        updated_at: "2024-01-01T00:00:00.000Z"
+    },
+    {
+        _id: getObjectId('Maximize Usage Frequency'),
+        workspace: getObjectId("Workspace Demo"),
+        name: 'Maximize Usage Frequency',
+        metric: getObjectId('Usage Frequency'),
+        expire_date: "2025-12-31T23:59:59.999Z",
+        aggregate: 'AVERAGE',
+        target: 6,
+        description: "Our goal is to maximize the average usage frequency to 6 days a week by the end of 2025.",
+        created_by: getObjectId('Stageholder Admin'),
+        created_at: "2024-01-01T00:00:00.000Z",
+        updated_at: "2024-01-01T00:00:00.000Z"
+    },
+    {
+        _id: getObjectId('Increase Operating Hours'),
+        workspace: getObjectId("Workspace Demo"),
+        name: 'Increase Operating Hours',
+        metric: getObjectId('Operating Hours'),
+        expire_date: "2025-12-31T23:59:59.999Z",
+        aggregate: 'SUM',
+        target: 80000,
+        description: "Our goal is to have a total of 80000 operating hours across all assets by the end of 2025.",
+        created_by: getObjectId('Stageholder Admin'),
+        created_at: "2024-01-01T00:00:00.000Z",
+        updated_at: "2024-01-01T00:00:00.000Z"
+    },
+    {
+        _id: getObjectId('Decrease Maintenance Frequency'),
+        workspace: getObjectId("Workspace Demo"),
+        name: 'Decrease Maintenance Frequency',
+        metric: getObjectId('Maintenance Frequency'),
+        expire_date: "2025-12-31T23:59:59.999Z",
+        aggregate: 'AVERAGE',
+        target: 1.5,
+        description: "Our goal is to decrease the average maintenance frequency to 1.5 times a year by the end of 2025.",
+        created_by: getObjectId('Stageholder Admin'),
+        created_at: "2024-01-01T00:00:00.000Z",
+        updated_at: "2024-01-01T00:00:00.000Z"
+    }
+]
+
+  
+    export default goals;

@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  api:
+    image: stageholder-api:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - /var/www/stageholder:/var/www/stageholder
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    env_file:
+      - .env.api
+
+  pwa:
+    image: stageholder-pwa:latest
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.pwa

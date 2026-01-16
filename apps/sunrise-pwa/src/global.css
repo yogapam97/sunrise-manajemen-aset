@@ -1,0 +1,9 @@
+/* scrollbar */
+@import "simplebar-react/dist/simplebar.min.css";
+/* lightbox */
+@import "yet-another-react-lightbox/styles.css";
+@import "simplebar-react/dist/simplebar.min.css";
+@import "yet-another-react-lightbox/plugins/captions.css";
+@import "yet-another-react-lightbox/plugins/thumbnails.css";
+/* image */
+@import "react-lazy-load-image-component/src/effects/blur.css";

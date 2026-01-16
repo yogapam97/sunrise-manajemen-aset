@@ -1,0 +1,67 @@
+fixed asset name:
+"Dell OptiPlex 3080"
+"Apple MacBook Pro"
+"Samsung Monitor S24R350"
+"Office Chair OC500"
+"Company Car CC100"
+"Conference Table CT200"
+"Air Conditioner AC250"
+"Office Sofa OS300"
+"Projector P100"
+"Workstation W400"
+
+
+
+
+
+---
+schema: 
+const AssignmentSchema = new mongoose.Schema(
+    workspace: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Workspace,
+    },
+    fixed_asset: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: FixedAsset,
+    },
+    old_assignee: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: User,
+    },
+    new_assignee: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: User,
+    },
+    assigned_by: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: User,
+    },
+    note: String,
+  },
+  {
+    timestamps: true,
+  }
+)
+
+---
+available assignee:
+"Stageholder Admin",
+"John User",
+
+---
+example:
+[
+  {
+    workspace: getObjectId("Stageholder Demo"),
+    fixed_asset: getObjectId("Branch Office Servers"),
+    old_assignee: getObjectId("Stageholder Admin"),
+    new_assignee: getObjectId("John User"),
+    note: "Assignment changed from Stageholder Admin to John User",
+    assigned_by: getObjectId("Stageholder Admin"),
+    created_at: "2023-05-15T10:00:00.000Z",
+  },
+]
+
+---
+please create array based on schema provided, the result kind a like the example but column just like the example, the data is about assignee, the data current assignee is new_assignee, the data that generated is mutation history, do you understand it or need more information?

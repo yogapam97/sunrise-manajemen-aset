@@ -1,0 +1,75 @@
+import type { Router } from "express";
+
+import express from "express";
+
+import authRouters from "./authRouters";
+import goalRouters from "./goalRouters";
+import fileRouters from "./fileRouters";
+import auditRouters from "./auditRouters";
+import checkRouters from "./checkRouters";
+import memberRouters from "./memberRouters";
+import metricRouters from "./metricRouters";
+import hashtagRouters from "./hashtagRouters";
+import fileTmpRouters from "./fileTmpRouters";
+import categoryRouters from "./categoryRouters";
+import locationRouters from "./locationRouters";
+import supplierRouters from "./supplierRouters";
+import workspaceRouters from "./workspaceRouters";
+import lifecycleRouters from "./lifecycleRouters";
+import fixedAssetRouters from "./fixedAssetRouters";
+import assessmentRouters from "./assessmentRouters";
+import transitionRouters from "./transitionRouters";
+import relocationRouters from "./relocationRouters";
+import assignmentRouters from "./assignmentRouters";
+import generateQrRouters from "./generateQrRouters";
+import maintenanceRouters from "./maintenanceRouters";
+import depreciationRouters from "./depreciationRouters";
+import operationLogRouters from "./operationLogRouters";
+import checkDownloadRouters from "./checkDownloadRouters";
+import operationGroupRouters from "./operationGroupRouters";
+import fixedAssetReportRouters from "./fixedAssetReportRouters";
+import fixedAssetImportRouters from "./fixedAssetImportRouters";
+import fixedAssetDownloadRouters from "./fixedAssetDownloadRouters";
+import operationLogDownloadRouters from "./operationLogDownloadRouters";
+import depreciationDownloadRouters from "./depreciationDownloadRouters";
+
+const router = express.Router();
+const prefix = "/api/v1";
+
+const routes = (app: Router) => {
+  app.use(router);
+  app.get("/", (req, res) => res.send("Welcome to Stageholder API!"));
+  app.get("/ping", (req, res) => res.send("pong"));
+  app.use(`${prefix}/auth`, authRouters);
+  app.use(`${prefix}/files`, fileRouters);
+  app.use(`${prefix}/files-tmp`, fileTmpRouters);
+  app.use(`${prefix}/workspaces`, workspaceRouters);
+  app.use(`${prefix}/members`, memberRouters);
+  app.use(`${prefix}/fixed-assets`, fixedAssetRouters);
+  app.use(`${prefix}/fixed-assets-report`, fixedAssetReportRouters);
+  app.use(`${prefix}/fixed-assets-import`, fixedAssetImportRouters);
+  app.use(`${prefix}/fixed-assets-download`, fixedAssetDownloadRouters);
+  app.use(`${prefix}/operation-groups`, operationGroupRouters);
+  app.use(`${prefix}/operation-logs`, operationLogRouters);
+  app.use(`${prefix}/operation-logs-download`, operationLogDownloadRouters);
+  app.use(`${prefix}/categories`, categoryRouters);
+  app.use(`${prefix}/hashtags`, hashtagRouters);
+  app.use(`${prefix}/locations`, locationRouters);
+  app.use(`${prefix}/checks-download`, checkDownloadRouters);
+  app.use(`${prefix}/checks`, checkRouters);
+  app.use(`${prefix}/maintenances`, maintenanceRouters);
+  app.use(`${prefix}/suppliers`, supplierRouters);
+  app.use(`${prefix}/lifecycles`, lifecycleRouters);
+  app.use(`${prefix}/metrics`, metricRouters);
+  app.use(`${prefix}/goals`, goalRouters);
+  app.use(`${prefix}/depreciations`, depreciationRouters);
+  app.use(`${prefix}/depreciations-download`, depreciationDownloadRouters);
+  app.use(`${prefix}/assessments`, assessmentRouters);
+  app.use(`${prefix}/audits`, auditRouters);
+  app.use(`${prefix}/transitions`, transitionRouters);
+  app.use(`${prefix}/assignments`, assignmentRouters);
+  app.use(`${prefix}/relocations`, relocationRouters);
+  app.use(`${prefix}/generate-qrs`, generateQrRouters);
+};
+
+export default routes;

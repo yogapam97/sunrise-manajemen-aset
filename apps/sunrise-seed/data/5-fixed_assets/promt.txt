@@ -1,0 +1,128 @@
+workspace_name =
+"Stageholder Demo"
+
+category_name = 
+"Building"
+"Machinery & Equipment"
+"Land"
+"Furniture & Fixtures"
+"Computer Equipment"
+"Software"
+
+hashtag_name = 
+"RealEstateAssets"
+"MachineryAndEquipment"
+"LandAssets"
+"OfficeFurniture"
+"ITAssets"
+"SoftwareAssets"
+
+location_name =
+"Headquarters"
+"Branch Office"
+"Remote Office"
+
+lifecycle_name =
+"Warehouse"
+"Deployed"
+"Maintenance"
+
+assignee_name =
+"Stageholder Admin"
+"John User"
+"Alice Auditor"
+
+metric_name =
+"Operating Hours"
+"Asset Condition"
+"Usage Frequency"
+"Maintenance Frequency"
+
+---
+
+schema:
+
+new mongoose.Schema(
+  {
+    workspace: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Workspace,
+    },
+    name: String,
+    code: String,
+    value: Number,
+    description: String,
+    metric: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Metric,
+    },
+    location: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Location,
+    },
+    lifecycle: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Lifecycle,
+    },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Category,
+    },
+    assignee: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: User,
+    },
+    hashtags: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: Hashtag,
+      },
+    ],
+    images: [
+      {
+        type: String,
+      },
+    ],
+    thumbnail: String,
+    is_calculate_depreciation: Boolean,
+    purchase_date: Date,
+    purchase_price: Number,
+    active_start_date: Date,
+    active_end_date: Date,
+    additional_fields: [mongoose.Schema.Types.Mixed],
+    created_by: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: User,
+    },
+  },
+  {
+    timestamps: {
+      createdAt: 'created_at',
+      updatedAt: 'updated_at',
+    },
+  }
+)
+
+---
+
+example:
+
+const { getObjectId, getObjectIds } = require('../../helpers/index');
+
+const fixed_assets = [
+  {
+    id: getObjectId('post1'),
+    categoriesIds: getObjectIds(['Cats', 'Dogs']),
+    title: 'Lorem ipsum',
+    description: 'Sample Post 1 description',
+    tags: ['sample', 'tags'],
+    author: {
+      name: 'Author',
+      email: 'test@example.com',
+    },
+    comments: [],
+    creationDate: new Date(),
+  },
+];
+
+module.exports = posts;

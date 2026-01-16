@@ -1,0 +1,75 @@
+fixed asset name:
+"Dell OptiPlex 3080"
+"Apple MacBook Pro"
+"Samsung Monitor S24R350"
+"Office Chair OC500"
+"Company Car CC100"
+"Conference Table CT200"
+"Air Conditioner AC250"
+"Office Sofa OS300"
+"Projector P100"
+"Workstation W400"
+
+
+
+
+---
+schema: 
+const DeploymentSchema = new mongoose.Schema(
+  {
+    workspace: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Workspace,
+    },
+    fixed_asset: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: FixedAsset,
+    },
+    old_lifecycle: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Lifecycle,
+    },
+    new_lifecycle: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Lifecycle,
+    },
+    deployedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: User,
+    },
+    note: String,
+  },
+)
+
+---
+available lifecyle:
+"Warehouse"
+"Deployed"
+"Maintenance"
+
+---
+example:
+[
+    
+  {
+    workspace: getObjectId("Stageholder Demo"),
+    fixed_asset: getObjectId("Branch Office Servers"),
+    old_lifecycle: getObjectId("Deployed"),
+    new_lifecycle: getObjectId("Maintenance"),
+    deployed_by: getObjectId("John User"),
+    note: "State changed from Deployed to Maintenance",
+    created_at: "2023-05-10T09:00:00.000Z",
+  },
+  {
+    workspace: getObjectId("Stageholder Demo"),
+    fixed_asset: getObjectId("Office Desk"),
+    old_lifecycle: getObjectId("Maintenance"),
+    new_lifecycle: getObjectId("Deployed"),
+    deployed_by: getObjectId("John User"),
+    note: "State changed from Maintenance to Deployed",
+    created_at: "2023-05-11T10:30:00.000Z",
+  },
+]
+
+---
+please create array based on schema provided, the result kind a like the example but column just like the example, the data is about placement, the data current placement is new_placement, the data that generated is mutation history, do you understand it or need more information?

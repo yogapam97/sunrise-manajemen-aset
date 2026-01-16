@@ -1,0 +1,12 @@
+node_modules
+yarn-error.log
+.DS_Store
+
+coverage/
+storage/
+tmp/
+dist/
+logs/
+
+.env
+.env.test

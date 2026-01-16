@@ -1,0 +1,11 @@
+{
+  "testing.openTesting": "neverOpen",
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "editor.formatOnSave": true,
+  "eslint.format.enable": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "testing.automaticallyOpenTestResults": "neverOpen"
+}
